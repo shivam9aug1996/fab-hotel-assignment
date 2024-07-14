@@ -5,6 +5,7 @@ import Providers from "./components/Providers";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Image from "next/image";
+import backgroundImage from "../../public/hotel-bg.webp";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -29,14 +30,14 @@ export default function RootLayout({
           >
             {/* Use Image component */}
             <Image
-              src={"/hotel-bg.webp"}
+              src={backgroundImage}
               alt="Hotel Background"
               layout="fill" // Makes the image cover the entire container
               objectFit="cover" // Ensures the image covers the container
               quality={10} // Sets image quality (optional)
               className="absolute inset-0" // Ensures proper positioning
               style={{ zIndex: -1 }}
-              blurDataURL={`${process.env.API_BASE_URL}/_next/image?url=%2Fhotel-bg.webp&w=1&q=1`}
+              // blurDataURL={`https://fab-hotel-assignment.vercel.app/_next/image?url=%2Fhotel-bg.webp&w=1&q=1`}
               placeholder={"blur"}
             />
             <div
