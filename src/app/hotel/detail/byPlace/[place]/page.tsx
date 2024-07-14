@@ -21,8 +21,8 @@ const Page = async ({ params }: DetailByPlaceProps) => {
   return (
     <div>
       <div className="p-6 max-w-4xl mx-auto ">
-        <div className="">
-          <h1 className="text-4xl font-extrabold text-center  text-white">
+        <div className="bg-white shadow-lg rounded-lg border border-gray-300 mt-6 p-6">
+          <h1 className="text-4xl font-extrabold text-center ">
             Hotels in {decodeURIComponent(params?.place || "Unknown")}
           </h1>
         </div>
