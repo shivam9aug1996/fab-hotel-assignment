@@ -34,7 +34,7 @@ export default function RootLayout({
               alt="Hotel Background"
               layout="fill" // Makes the image cover the entire container
               objectFit="cover" // Ensures the image covers the container
-              quality={10} // Sets image quality (optional)
+              quality={50} // Sets image quality (optional)
               className="absolute inset-0" // Ensures proper positioning
               style={{ zIndex: -1 }}
               // blurDataURL={`https://fab-hotel-assignment.vercel.app/_next/image?url=%2Fhotel-bg.webp&w=1&q=1`}
