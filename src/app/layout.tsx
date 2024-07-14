@@ -36,7 +36,7 @@ export default function RootLayout({
               quality={10} // Sets image quality (optional)
               className="absolute inset-0" // Ensures proper positioning
               style={{ zIndex: -1 }}
-              blurDataURL={"/_next/image?url=%2Fhotel-bg.webp&w=1&q=1"}
+              blurDataURL={`${process.env.API_BASE_URL}/_next/image?url=%2Fhotel-bg.webp&w=1&q=1`}
               placeholder={"blur"}
             />
             <div
