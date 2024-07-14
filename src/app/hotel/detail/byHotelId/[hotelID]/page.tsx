@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { HotelDetailApiResponse, DetailByIdProps } from "@/app/types";
 import React from "react";
 
