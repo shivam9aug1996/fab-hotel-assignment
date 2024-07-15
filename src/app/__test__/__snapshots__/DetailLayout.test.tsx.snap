@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailLayout renders DetailLayout 1`] = `
+<div>
+  <div>
+    <button
+      class="bg-gray-800 text-white py-2 px-4 rounded mt-6 absolute top-0 left-6"
+    >
+      Back
+    </button>
+    <div
+      class="p-8 max-w-2xl mx-auto bg-white shadow-2xl rounded-lg border border-gray-200"
+    >
+      <div
+        class="relative mb-6"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-blue-100 to-purple-100 rounded-lg opacity-50"
+        />
+        <h1
+          class="relative text-4xl font-extrabold mb-4 text-gray-900 p-5"
+        >
+          Test Title
+        </h1>
+      </div>
+      <div
+        class="space-y-6"
+      />
+    </div>
+  </div>
+</div>
+`;
