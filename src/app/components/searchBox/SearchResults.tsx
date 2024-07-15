@@ -1,56 +1,16 @@
 "use client";
-import Link from "next/link";
 import React, { memo } from "react";
-import { SearchResultsProps } from "../types";
+import { SearchResultsProps } from "../../types";
+import ResultItem from "./ResultItem";
 
-const ResultItem: React.FC<{
-  href: string;
-  onClick: () => void;
-  text: string;
-  input: string;
-}> = ({ href, onClick, text, input }) => {
-  const highlightText = (part: string) => {
-    const regex = new RegExp(`(${input})`, "gi");
-    const parts = part.split(regex);
-
-    return parts.map((part, index) =>
-      part.toLowerCase() === input.toLowerCase() ? (
-        <span key={index} style={{ color: "black", fontWeight: "bold" }}>
-          {part}
-        </span>
-      ) : (
-        part
-      )
-    );
-  };
-
-  const [firstPart, ...restParts] = text.split(",");
-
-  return (
-    <Link href={href} onClick={onClick}>
-      <div className="p-4 hover:bg-gray-100 cursor-pointer transition duration-300 ease-in-out">
-        <p className="text-gray-700 text-sm">
-          {highlightText(firstPart)}
-          {restParts.length > 0 && (
-            <span className="text-gray-400">
-              {","}
-              {highlightText(restParts.join(","))}
-            </span>
-          )}
-        </p>
-      </div>
-    </Link>
-  );
-};
-
-const SearchResults: React.FC<SearchResultsProps> = ({
+const SearchResults = ({
   googleData,
   hotelData,
   isFetchingGooglePlaceData,
   isFetchingHotelData,
   handleSelect,
   input,
-}) => {
+}: SearchResultsProps) => {
   const isLoading = isFetchingGooglePlaceData || isFetchingHotelData;
   const noResults =
     !isLoading && !googleData?.data.length && !hotelData?.data.length;
@@ -74,7 +34,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {googleData.data.map((item) => (
               <ResultItem
                 key={item.place_id}
-                href={`/hotel/detail/byPlace/${item.description}`}
+                href={`/hotel/detail/byPlace/${item.description}?queryInput=${item.description}`}
                 onClick={() => handleSelect(item.description)}
                 text={item.description}
                 input={input}
@@ -89,7 +49,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {hotelData.data.map((item) => (
               <ResultItem
                 key={item.hotelID}
-                href={`/hotel/detail/byHotelId/${item.hotelID}`}
+                href={`/hotel/detail/byHotelId/${item.hotelID}?queryInput=${item.item}`}
                 onClick={() => handleSelect(item.item)}
                 text={item.item}
                 input={input}

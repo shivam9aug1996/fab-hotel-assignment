@@ -1,29 +1,20 @@
 export const dynamic = "force-dynamic";
 
+import Back from "@/app/components/Back";
 import { HotelDetailApiResponse, DetailByPlaceProps } from "@/app/types";
 import React from "react";
 
-const Page = async ({ params }: DetailByPlaceProps) => {
-  const apiUrl = `${process.env.API_BASE_URL}/api/hotel/detail?place=${params?.place}`;
-
-  let response: HotelDetailApiResponse;
-  try {
-    const res = await fetch(apiUrl);
-    const data = await res.json();
-    response = data;
-  } catch (error) {
-    console.error("Failed to fetch data", error);
-    response = { data: { byPlace: [] } };
-  }
-
-  const hotels = response.data.byPlace || [];
+const Page = async ({ params: { place } }: DetailByPlaceProps) => {
+  const data = await fetchHotelDetails(place);
+  const hotels = data?.data?.byPlace || [];
 
   return (
     <div>
+      <Back />
       <div className="p-6 max-w-4xl mx-auto ">
-        <div className="bg-white shadow-lg rounded-lg border border-gray-300 mt-6 p-6">
+        <div className="bg-white shadow-lg rounded-lg border border-gray-300 mt-16 p-6">
           <h1 className="text-4xl font-extrabold text-center ">
-            Hotels in {decodeURIComponent(params?.place || "Unknown")}
+            Hotels in {decodeURIComponent(place || "Unknown")}
           </h1>
         </div>
 
@@ -68,3 +59,18 @@ const Page = async ({ params }: DetailByPlaceProps) => {
 };
 
 export default Page;
+
+const fetchHotelDetails = async (
+  place: string | undefined
+): Promise<HotelDetailApiResponse> => {
+  const apiUrl = `${process.env.API_BASE_URL}/api/hotel/detail?place=${place}`;
+
+  try {
+    const res = await fetch(apiUrl);
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Failed to fetch data", error);
+    return { data: { byPlace: [] } };
+  }
+};

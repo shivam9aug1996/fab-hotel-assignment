@@ -37,3 +37,9 @@ export interface DetailByPlaceProps {
     place?: string;
   };
 }
+
+export interface InputProps {
+  input: string;
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  handleClear: () => void;
+}

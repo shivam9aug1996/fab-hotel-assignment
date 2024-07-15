@@ -1,10 +1,14 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import { Provider } from "react-redux";
 import { setSelectedSearchFieldValue } from "../redux/features/hotelSearchApiSlice";
 import { store } from "../redux/store";
 
-const Providers = ({ children }: any) => {
+interface ProvidersProps {
+  children: ReactNode;
+}
+
+const Providers = ({ children }: ProvidersProps) => {
   useEffect(() => {
     const selectedSearchFieldValue = localStorage.getItem(
       "selectedSearchFieldValue"
@@ -13,6 +17,7 @@ const Providers = ({ children }: any) => {
       store.dispatch(setSelectedSearchFieldValue(selectedSearchFieldValue));
     }
   }, []);
+
   return <Provider store={store}>{children}</Provider>;
 };
 

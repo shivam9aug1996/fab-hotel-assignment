@@ -25,7 +25,6 @@ const hotelSearchApiSlice = createSlice({
   reducers: {
     setSelectedSearchFieldValue: (state, action) => {
       state.selectedSearchFieldValue = action.payload;
-      console.log(action.payload);
       localStorage.setItem("selectedSearchFieldValue", action.payload);
     },
   },
