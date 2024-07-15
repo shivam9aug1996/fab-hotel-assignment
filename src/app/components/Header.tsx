@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
 import SearchField from "./searchBox/SearchField";
 
 const Header = () => {
@@ -15,7 +15,9 @@ const Header = () => {
           </h1>
         </Link>
         <div className="flex-2 ml-4">
-          <SearchField />
+          <Suspense fallback={<></>}>
+            <SearchField />
+          </Suspense>
         </div>
       </div>
     </header>
