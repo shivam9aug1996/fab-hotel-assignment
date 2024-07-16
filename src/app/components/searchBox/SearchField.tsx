@@ -1,5 +1,5 @@
 "use client";
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { lazy, memo, useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import useUpdateSelectedSearchField from "../../hooks/useUpdateSelectedSearchField";
@@ -7,7 +7,8 @@ import { useLazyGoogleAutocompleteQuery } from "../../redux/features/googleAutoc
 import { useLazyHotelSearchQuery } from "../../redux/features/hotelSearchApiSlice";
 import { debounce } from "../../utils/functions";
 import Input from "./Input";
-import SearchResults from "./SearchResults";
+import dynamic from "next/dynamic";
+const SearchResults = dynamic(() => import("./SearchResults"));
 
 const SearchField: React.FC = () => {
   const selectedSearchFieldValue = useSelector(

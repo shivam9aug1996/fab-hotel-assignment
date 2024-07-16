@@ -1,6 +1,9 @@
 import Link from "next/link";
 import React, { Suspense } from "react";
-import SearchField from "./searchBox/SearchField";
+import dynamic from "next/dynamic";
+const SearchField = dynamic(() => import("./searchBox/SearchField"), {
+  ssr: false,
+});
 
 const Header = () => {
   return (
@@ -15,9 +18,7 @@ const Header = () => {
           </h1>
         </Link>
         <div className="flex-2 ml-4">
-          <Suspense fallback={<></>}>
-            <SearchField />
-          </Suspense>
+          <SearchField />
         </div>
       </div>
     </header>
