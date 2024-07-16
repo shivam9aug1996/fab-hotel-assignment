@@ -11,10 +11,10 @@ const Background: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       src={backgroundImage}
       alt="Hotel Background"
       quality={50}
-      className="absolute inset-0"
       style={{ zIndex: -1 }}
       placeholder="blur"
       fill={true}
+      priority
     />
     <div
       className="absolute inset-0 bg-yellow-50"

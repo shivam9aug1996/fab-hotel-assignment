@@ -3,7 +3,7 @@
 exports[`HomePage renders homepage 1`] = `
 <div>
   <div
-    class="relative p-16 rounded-lg bg-slate-300 text-center px-32"
+    class="relative p-16 rounded-lg bg-white text-center px-32"
   >
     <h1
       class="text-3xl font-bold text-black font-serif"
